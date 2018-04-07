@@ -55,21 +55,4 @@ class PaymentTest extends TestCase
      
         $this->assertNotNull($result->next_redirect_pc_url);
     }
-
-    /*
-    public function approve()
-    {
-        $payment = new Payment();
-        Kakaopay::setAdminKey(getenv('KAKAOPAY_ADMIN_KEY'));
-        $result = $payment->approve([
-            'cid' => 'TC0ONETIME',
-            'tid' => 'T1234567890123456789',
-            'partner_order_id' => 'partner_order_id',
-            'partner_user_id' => 'partner_user_id',
-            'pg_token' => 'xxxxxxxxxxxxxxxxxxxx'
-        ]);
-
-        $this->assertNotNull($result->tid);
-    }
-    */
 }
