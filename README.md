@@ -1,17 +1,28 @@
 # Kakaopay REST API PHP wrapper
-Wrapper for Kakaopay REST API. 
+Wrapper for Kakaopay REST API. Kakaopay provides convenient way to do internet transaction in Korea because it doesn't need a separate Payment Gateway (PG). The transaction is done only with the user's Kakaotalk account. 
+
+Official Kakaopay REST API documentation is [here](https://developers.kakao.com/docs/restapi/kakaopay-api).
+
+## Installation
+Via Composer:
+```
+composer require se468/kakaopay-php
+```
 
 ## Usage
 ### Single payment process
 #### Payment Ready
+Used for requesting the user for the transaction. User will receive a message to confirm the transaction.
+
+API Endpoint:
 ```
 POST /v1/payment/ready HTTP/1.1
 ```
 
-Example:
+Usage Example:
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->ready([
     'cid' => 'TC0ONETIME',
@@ -30,7 +41,7 @@ $result = $payment->ready([
 
 Here's the explanation of the process: 
 
-* Result from `payment/ready` will have transation `tid` (`$result->tid`), which you can safely store in your session. 
+* Result from `payment/ready` will have transation ID, or `tid` (`$result->tid`), which you can safely store in your session. 
 
 * Store the `tid` in session and redirect to `$result->next_redirect_pc_url`. Customer will be prompted to enter their Kakaopay phone number and password. 
 
@@ -40,14 +51,15 @@ Here's the explanation of the process:
 
 
 #### Payment Approve
+With the given `tid` from payment ready, approve the transaction to finalize. 
 ```
 POST /v1/payment/approve HTTP/1.1
 ```
 
 Example:
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(getenv('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 $result = $payment->approve([
     'cid' => 'TC0ONETIME',
     'tid' => 'T1234567890123456789', //tid received from result from 'ready'
@@ -61,10 +73,10 @@ $result = $payment->approve([
 
 ### Subscription Process
 #### Payment Ready
-Example Payment Ready
+Example Payment Ready for subscription
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->ready([
     'cid' => 'TCSUBSCRIP',
@@ -88,14 +100,16 @@ $result = $payment->ready([
 
 
 #### Subscription from second payment
+On going subscription fees can be called like the following:
+
 ```
 POST /v1/payment/subscription HTTP/1.1
 ```
 
 Example:
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->subscription([
     'cid' => 'TCSUBSCRIP', // cid for testing
@@ -104,7 +118,7 @@ $result = $payment->subscription([
     'partner_user_id' => 'subscription_user_id_1',
     'item_name' => '음악정기결제',
     'quantity' => '1',
-    'total_amount' => '9900'
+    'total_amount' => '9900',
     'vat_amount' => '900',
     'tax_free_amount' => '0',
 ]);
@@ -116,8 +130,8 @@ POST /v1/payment/cancel HTTP/1.1
 ```
 
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->cancel([
     'cid' => 'TC0ONETIME', // cid for testing
@@ -136,8 +150,8 @@ GET/POST /v1/payment/order HTTP/1.1
 
 Example:
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->order([
     'cid' => 'TC0ONETIME', // cid for testing
@@ -145,15 +159,15 @@ $result = $payment->order([
 ]);
 ```
 
-#### Subscription information checking
+#### Checking the Subscription information
 ```
 POST /v1/payment/manage/subscription/status HTTP/1.1
 ```
 
 Example:
 ```
-$payment = new Payment();
-Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
 $result = $payment->order([
     'cid' => 'TCSUBSCRIP', // cid for testing
@@ -168,8 +182,11 @@ POST /v1/payment/manage/subscription/inactive HTTP/1.1
 
 Example:
 ```
-curl -v -X POST 'https://kapi.kakao.com/v1/payment/manage/subscription/inactive' \
--H 'Authorization: KakaoAK xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
--d 'cid=TCSUBSCRIP' \
--d 'sid=S1234567890987654321'
+$payment = new \se468\Kakaopay\Payment();
+\se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
+
+$result = $payment->inactive([
+    'cid' => 'TCSUBSCRIP', // cid for testing
+    'sid' => 'S1234567890987654321',
+]);
 ```
