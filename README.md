@@ -20,7 +20,7 @@ POST /v1/payment/ready HTTP/1.1
 ```
 
 Usage Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -57,7 +57,7 @@ POST /v1/payment/approve HTTP/1.1
 ```
 
 Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 $result = $payment->approve([
@@ -74,7 +74,7 @@ $result = $payment->approve([
 ### Subscription Process
 #### Payment Ready
 Example Payment Ready for subscription
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -107,7 +107,7 @@ POST /v1/payment/subscription HTTP/1.1
 ```
 
 Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -129,7 +129,7 @@ $result = $payment->subscription([
 POST /v1/payment/cancel HTTP/1.1
 ```
 
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -149,7 +149,7 @@ GET/POST /v1/payment/order HTTP/1.1
 ```
 
 Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -165,7 +165,7 @@ POST /v1/payment/manage/subscription/status HTTP/1.1
 ```
 
 Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
@@ -181,7 +181,7 @@ POST /v1/payment/manage/subscription/inactive HTTP/1.1
 ```
 
 Example:
-```
+```php
 $payment = new \se468\Kakaopay\Payment();
 \se468\Kakaopay\Kakaopay::setAdminKey(env('KAKAOPAY_ADMIN_KEY'));
 
