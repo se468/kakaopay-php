@@ -1,7 +1,7 @@
 {
     "name": "se468/kakaopay-php",
     "description": "Kakaopay REST API wrapper for PHP",
-    "keywords": ["laravel", "package"],
+    "keywords": ["kakaopay", "kakaopay-rest-api", "php", "kakaotalk"],
     "license": "MIT",
     "authors": [
         {
