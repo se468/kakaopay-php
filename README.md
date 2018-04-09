@@ -3,6 +3,8 @@ Wrapper for Kakaopay REST API. Kakaopay provides convenient way to do internet t
 
 Official Kakaopay REST API documentation is [here](https://developers.kakao.com/docs/restapi/kakaopay-api).
 
+Example Implementation in Laravel is [here](https://github.com/se468/kakaopay-laravel-example).
+
 ## Installation
 Via Composer:
 ```
