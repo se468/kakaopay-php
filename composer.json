@@ -1,6 +1,6 @@
 {
     "name": "se468/kakaopay-php",
-    "description": "Starting point for Laravel package development.",
+    "description": "Kakaopay REST API wrapper for PHP",
     "keywords": ["laravel", "package"],
     "license": "MIT",
     "authors": [
@@ -28,10 +28,5 @@
         ]
     },
     "extra": {
-        "laravel": {
-            "providers": [
-                "se468\\Kakaopay\\KakaopayServiceProvider"
-            ]
-        }
     }
 }
