@@ -5,11 +5,11 @@
 
 Wrapper for Kakaopay REST API. Kakaopay provides convenient way to do internet transaction in Korea because it doesn't need a separate Payment Gateway (PG). The transaction is done only with the user's Kakaotalk account. 
 
-Official Kakaopay REST API documentation is [here](https://developers.kakao.com/docs/restapi/kakaopay-api).
+**Official Kakaopay REST API documentation**: [here](https://developers.kakao.com/docs/restapi/kakaopay-api).
 
-Example Implementation in Laravel is [here](https://github.com/se468/kakaopay-laravel-example).
+**Example Implementation**: [here](https://github.com/se468/kakaopay-laravel-example).
 
-Demo of the implementation is [here](http://package-demos.seyongcho.com/kakaopay).
+**Demo**: [here](http://package-demos.seyongcho.com/kakaopay).
 
 ## Installation
 Via Composer:
