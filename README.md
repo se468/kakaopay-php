@@ -1,4 +1,8 @@
 # Kakaopay REST API PHP wrapper
+[![Latest Stable Version](https://poser.pugx.org/se468/kakaopay-php/v/stable)](https://packagist.org/packages/se468/kakaopay-php)
+[![Total Downloads](https://poser.pugx.org/se468/kakaopay-php/downloads)](https://packagist.org/packages/se468/kakaopay-php)
+[![License](https://poser.pugx.org/se468/kakaopay-php/license)](https://packagist.org/packages/se468/kakaopay-php)
+
 Wrapper for Kakaopay REST API. Kakaopay provides convenient way to do internet transaction in Korea because it doesn't need a separate Payment Gateway (PG). The transaction is done only with the user's Kakaotalk account. 
 
 Official Kakaopay REST API documentation is [here](https://developers.kakao.com/docs/restapi/kakaopay-api).
