@@ -5,6 +5,8 @@ Official Kakaopay REST API documentation is [here](https://developers.kakao.com/
 
 Example Implementation in Laravel is [here](https://github.com/se468/kakaopay-laravel-example).
 
+Demo of the implementation is [here](http://package-demos.seyongcho.com/kakaopay).
+
 ## Installation
 Via Composer:
 ```
